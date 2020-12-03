@@ -6,10 +6,7 @@
           <span> Esqueceu sua senha?</span>
         </div>
         <div class="my-2">
-          <span
-            >Digite seu e-mail abaixo para enviarmos um codigo de
-            verificação</span
-          >
+          <span>Digite seu e-mail abaixo para enviarmos um codigo de verificação</span>
         </div>
         <v-text-field
           color="teal accent-4"
@@ -18,15 +15,11 @@
           v-model="email"
           label="E-mail"
         ></v-text-field>
-        <v-alert :type="type" :value="request" dismissible>{{
-          message
-        }}</v-alert>
+        <v-alert :type="type" :value="request" dismissible>{{ message }}</v-alert>
       </v-col>
 
       <v-col cols="12">
-        <v-btn block x-large @click="resetPass" color="teal accent-4" dark
-          >Confirmar</v-btn
-        >
+        <v-btn block x-large @click="resetPass" color="teal accent-4" dark>Confirmar</v-btn>
       </v-col>
     </v-row>
   </div>
@@ -38,10 +31,8 @@ export default {
     return {
       email: null,
       emailRules: [
-        (v) => !!v || "E-mail é necessário",
-        (v) =>
-          /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) ||
-          "Digite um e-mail válido",
+        v => !!v || 'E-mail é necessário',
+        v => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(v) || 'Digite um e-mail válido',
       ],
       request: false,
       message: null,
@@ -53,32 +44,30 @@ export default {
     checkForm() {
       if (this.email === null) {
         this.request = true;
-        this.message = "Preencha todos os campos para criar o cadastro!";
-        this.type = "error";
+        this.message = 'Preencha todos os campos para criar o cadastro!';
+        this.type = 'error';
         this.loading = false;
         return false;
-      } else {
-        this.loading = true;
-        return true;
       }
+      this.loading = true;
+      return true;
     },
     resetPass() {
       if (this.checkForm()) {
         this.$store
-          .dispatch("user/request", {
-            method: "POST",
-            url: "/client-forgot",
+          .dispatch('user/request', {
+            method: 'POST',
+            url: '/client-forgot',
             data: { email: this.email },
             noMsg: true,
           })
           .then(() => {
-            this.$emit("success-forgot");
+            this.$emit('success-forgot');
           })
           .catch(() => {
-            this.type = "error";
+            this.type = 'error';
             this.request = true;
-            this.message =
-              "Usuário não encontrado. Tente novamento um e-mail válido!";
+            this.message = 'Usuário não encontrado. Tente novamento um e-mail válido!';
           });
       }
     },

@@ -1,5 +1,5 @@
-import actionsGlobal from "../actions";
-import mutationsGlobal from "../mutations";
+import actionsGlobal from '../actions';
+import mutationsGlobal from '../mutations';
 
 const sale = {
   namespaced: true,
@@ -19,9 +19,9 @@ const sale = {
 
   getters: {
     getSale(state) {
-      let products = [];
+      const products = [];
       if (state.sale) {
-        state.sale.map((item) => {
+        state.sale.forEach(item => {
           products.push(item.item);
         });
       }

@@ -3,7 +3,7 @@
     <v-row align="center" class="fill-height" justify="center">
       <v-col cols="12" sm="5">
         <v-card outlined class="pa-5">
-          <router-view></router-view>
+          <Session />
         </v-card>
       </v-col>
     </v-row>
@@ -11,8 +11,12 @@
 </template>
 
 <script>
+import Session from '@/components/user/session/Session';
+
 export default {
-  components: {},
+  components: {
+    Session,
+  },
 };
 </script>
 

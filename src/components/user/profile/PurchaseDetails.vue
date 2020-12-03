@@ -27,11 +27,7 @@
       </div>
       <v-list>
         <div>
-          <v-list-item
-            v-for="(item, key) in purchase.items"
-            :key="key"
-            class="px-3"
-          >
+          <v-list-item v-for="(item, key) in purchase.items" :key="key" class="px-3">
             <v-list-item-content>
               <v-list-item-title
                 ><span v-text="item.product_qtd + 'X '"></span>
@@ -79,9 +75,7 @@
             <v-col cols="auto">Forma de pagamento</v-col>
             <v-col
               cols="auto"
-              v-for="(pay, p) in purchase.payment.match(
-                /[a-zA-Z\u00C0-\u00FF ]+/g
-              )"
+              v-for="(pay, p) in purchase.payment.match(/[a-zA-Z\u00C0-\u00FF ]+/g)"
               :key="p"
             >
               {{ pay }}
@@ -109,7 +103,7 @@
 </template>
 
 <script>
-import Mixins from "@/mixins/mixins.js";
+import Mixins from '@/mixins/mixins.js';
 
 export default {
   mixins: [Mixins],
@@ -128,10 +122,10 @@ export default {
   methods: {
     getDetails() {
       if (this.$route.params.id) {
-        this.$store.dispatch("sale/request", {
-          state: "purchaseDetails",
-          method: "GET",
-          url: "/sale-client/" + this.$route.params.id,
+        this.$store.dispatch('sale/request', {
+          state: 'purchaseDetails',
+          method: 'GET',
+          url: `/sale-client/${this.$route.params.id}`,
           noMsg: true,
         });
       }

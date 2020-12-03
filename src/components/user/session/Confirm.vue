@@ -3,10 +3,7 @@
     <v-row dense class="pa-5">
       <v-col cols="12">
         <div class="my-3">
-          <span>
-            Enviamos um código para seu e-mail. Digite abaixo para validar seu
-            cadastro</span
-          >
+          <span> Enviamos um código para seu e-mail. Digite abaixo para validar seu cadastro</span>
         </div>
         <v-text-field
           color="teal accent-4"
@@ -23,9 +20,7 @@
       </v-col>
 
       <v-col cols="12">
-        <v-btn block x-large @click="sendCode" color="teal accent-4" dark
-          >Confirmar</v-btn
-        >
+        <v-btn block x-large @click="sendCode" color="teal accent-4" dark>Confirmar</v-btn>
       </v-col>
     </v-row>
   </div>
@@ -42,15 +37,15 @@ export default {
   methods: {
     sendCode() {
       this.$store
-        .dispatch("user/request", {
-          method: "POST",
-          url: "/client-confirm",
+        .dispatch('user/request', {
+          method: 'POST',
+          url: '/client-confirm',
           noMsg: true,
 
           data: { token: this.code },
         })
         .then(() => {
-          this.$emit("success-code");
+          this.$emit('success-code');
         })
         .catch(() => {
           this.error = true;

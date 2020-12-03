@@ -1,5 +1,5 @@
-import actionsGlobal from "../actions";
-import mutationsGlobal from "../mutations";
+import actionsGlobal from '../actions';
+import mutationsGlobal from '../mutations';
 
 const product = {
   namespaced: true,
@@ -7,12 +7,13 @@ const product = {
     DialogProduct: false,
     produtos: [],
     productModal: null,
+    featured: null,
   }),
 
   getters: {
     getCategories(state) {
-      let categories = [];
-      Object.values(state.products).forEach((value) => {
+      const categories = [];
+      Object.values(state.products).forEach(value => {
         if (value.products.length > 0)
           categories.push({
             id: value.id,
@@ -21,14 +22,13 @@ const product = {
       });
       return categories;
     },
-    getSuggesteds(state) {
+    getBanner(state) {
       const suggesteds = [];
       // suggested
       if (state.products.length > 0) {
-        console.log("asdasd");
-        state.products.forEach((c) => {
-          c.products.forEach((p) => {
-            if (p.suggested === "y") suggesteds.push(p);
+        state.products.forEach(c => {
+          c.products.forEach(p => {
+            if (p.suggested === 'y') suggesteds.push(p);
           });
         });
       }

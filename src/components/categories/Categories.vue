@@ -28,7 +28,7 @@ export default {};
 <style>
 .section-title {
   font-size: 25px;
-  font-family: "Staatliches", cursive !important;
+  font-family: 'Staatliches', cursive !important;
   color: #2f404e;
 }
 </style>

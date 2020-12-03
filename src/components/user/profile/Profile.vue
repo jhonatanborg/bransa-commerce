@@ -43,14 +43,14 @@ export default {
   computed: {},
   methods: {
     getUser() {
-      if (localStorage.getItem("token")) {
+      if (localStorage.getItem('token')) {
         this.$store
-          .dispatch("user/request", {
-            method: "GET",
-            url: "/client/" + localStorage.getItem("user"),
+          .dispatch('user/request', {
+            method: 'GET',
+            url: `/client/${localStorage.getItem('user')}`,
             noMsg: true,
           })
-          .then((response) => {
+          .then(response => {
             this.user = response.data;
           })
           .catch(() => {

@@ -4,8 +4,8 @@
       <v-col cols="12">
         <div class="my-3">
           <span>
-            Enviamos um código de recuperação de senha para seu e-mail. Digite
-            abaixo para validar seu cadastro</span
+            Enviamos um código de recuperação de senha para seu e-mail. Digite abaixo para validar
+            seu cadastro</span
           >
         </div>
         <v-text-field
@@ -20,15 +20,11 @@
           v-model="user.password"
           label="Insira aqui sua nova senha"
         ></v-text-field>
-        <v-alert :type="type" :value="request" dismissible>{{
-          message
-        }}</v-alert>
+        <v-alert :type="type" :value="request" dismissible>{{ message }}</v-alert>
       </v-col>
 
       <v-col cols="12">
-        <v-btn block x-large @click="confirmReset" color="teal accent-4" dark
-          >Confirmar</v-btn
-        >
+        <v-btn block x-large @click="confirmReset" color="teal accent-4" dark>Confirmar</v-btn>
       </v-col>
     </v-row>
   </div>
@@ -50,20 +46,20 @@ export default {
   methods: {
     confirmReset() {
       this.$store
-        .dispatch("user/request", {
-          method: "POST",
-          url: "/client-reset-password",
+        .dispatch('user/request', {
+          method: 'POST',
+          url: '/client-reset-password',
           noMsg: true,
 
           data: this.user,
         })
         .then(() => {
           this.request = true;
-          this.type = "success";
+          this.type = 'success';
           this.message =
-            "Sua senha foi alterada com sucesso! Faça login com a nova senha para se conectar";
+            'Sua senha foi alterada com sucesso! Faça login com a nova senha para se conectar';
           setTimeout(() => {
-            this.$emit("success-forgot");
+            this.$emit('success-forgot');
           }, 2000);
         })
         .catch(() => {

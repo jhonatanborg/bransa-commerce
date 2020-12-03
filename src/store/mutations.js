@@ -1,4 +1,4 @@
-import { errorMessage } from "../utils";
+import { errorMessage } from '../utils';
 
 const mutations = {
   message(state, payload) {
@@ -9,7 +9,7 @@ const mutations = {
       () => {
         state.utils.snack = false;
       },
-      payload[1] === "error" ? 10000 : 5000
+      payload[1] === 'error' ? 10000 : 5000,
     );
   },
   request(state, payload) {

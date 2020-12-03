@@ -1,20 +1,15 @@
 <template>
   <div>
-    <v-container fluid>
-      <v-row no-gutters dense justify="start">
-        <v-col cols="12">
-          <v-text-field
-            solo
-            v-model="model"
-            :loading="$store.state.loading"
-            :search-input.sync="search"
-            hide-no-data
-            hide-selected
-            placeholder="Buscar por categoria"
-            append-icon="mdi-magnify"
-            return-object
-          ></v-text-field>
+    <div class="pa-5 carousel">
+      <div class="title-carousel my-3">
+        <span>Produtos em destaque</span>
+      </div>
+      <Carousel />
+    </div>
 
+    <v-container fluid>
+      <v-row no-gutters dense justify="start" align="center">
+        <v-col>
           <div class="pa-3">
             <div class="title-category">
               <span>Lista de categorias:</span>
@@ -43,9 +38,7 @@
                     small
                     link
                     dark
-                    :color="
-                      categorieFilter === index ? 'red lighten-1' : 'grey'
-                    "
+                    :color="categorieFilter === index ? 'red lighten-1' : 'grey'"
                   >
                     <b v-text="categorie.produto_grupo"></b>
                   </v-chip>
@@ -65,39 +58,57 @@
             </div>
           </div>
         </v-col>
+        <v-col cols="12">
+          <v-text-field
+            solo
+            rounded
+            v-model="search"
+            :loading="$store.state.loading"
+            :search-input.sync="search"
+            hide-no-data
+            hide-selected
+            placeholder="Buscar por categoria"
+            append-icon="mdi-magnify"
+            return-object
+          ></v-text-field>
+        </v-col>
       </v-row>
       <v-row class="px-3">
         <v-col v-if="selectCategorie" cols="12">
           <div id="list-products text-uppercase">
             <div :id="'go'">
-              <div class="title-category">
-                {{ selectCategorie.produto_grupo }}
+              <div>
+                <span class="title-category"> {{ selectCategorie.produto_grupo }} </span>
+                <small>({{ selectCategorie.produtos.length }})</small>
               </div>
             </div>
-            <v-row>
-              <v-col
-                sm="2"
-                v-for="(product, index) in selectCategorie.produtos"
-                :key="index"
-              >
-                <CardProduct :product="product"
-              /></v-col>
-            </v-row>
           </div>
         </v-col>
       </v-row>
+      <div class="products" v-if="selectCategorie">
+        <div v-for="(product, index) in selectCategorie.produtos" :key="index" class="my-3">
+          <CardProduct :product="product" />
+        </div>
+      </div>
+
+      <Brands />
     </v-container>
     <DialogProduct />
   </div>
 </template>
 
 <script>
-import CardProduct from "@/components/products/CardProduct.vue";
-import DialogProduct from "@/components/products/DialogProduct.vue";
+import Brands from '@/components/market/Brands';
+import CardProduct from '@/components/products/CardProduct';
+import DialogProduct from '@/components/products/DialogProduct';
+import Carousel from '@/components/market/Carousel';
+
 export default {
   components: {
     CardProduct,
     DialogProduct,
+    Carousel,
+    Brands,
   },
   mounted() {
     this.getProducts();
@@ -109,7 +120,7 @@ export default {
       isLoading: false,
       model: null,
       search: null,
-      links: ["Dashboard", "Messages", "Profile", "Updates"],
+      links: ['Dashboard', 'Messages', 'Profile', 'Updates'],
       filter: {
         start: 1,
         end: 8,
@@ -120,13 +131,13 @@ export default {
   watch: {
     search(val) {
       if (val) {
-        this.$store.dispatch("product/request", {
-          state: "produtos",
-          method: "POST",
+        this.$store.dispatch('product/request', {
+          state: 'produtos',
+          method: 'POST',
           data: {
-            produto_grupo: val,
+            produto_descricao: val,
           },
-          url: "/category/",
+          url: '/product-filter/',
           noMsg: false,
         });
       }
@@ -148,6 +159,7 @@ export default {
       let url;
       if (!minus && filter) {
         filter = {
+          // eslint-disable-next-line radix
           start: parseInt(filter.start) + 1,
           end: 8,
         };
@@ -157,16 +169,16 @@ export default {
         url = `/products-paginate/${this.filter.start}/${this.filter.end}`;
       } else if (filter.start !== 1) {
         filter = {
+          // eslint-disable-next-line radix
           start: parseInt(filter.start) - 1,
           end: 8,
         };
         this.filter = filter;
         url = `/products-paginate/${filter.start}/${filter.end}`;
       }
-
-      this.$store.dispatch("product/request", {
-        state: "produtos",
-        method: "GET",
+      this.$store.dispatch('product/request', {
+        state: 'produtos',
+        method: 'GET',
         url,
         noMsg: false,
       });
@@ -184,8 +196,31 @@ export default {
 }
 .title-category {
   font-size: 15px;
-  font-family: "Staatliches", cursive !important;
+  font-family: 'Staatliches', cursive !important;
   color: #2f404e;
   text-transform: capitalize;
+}
+.title-carousel {
+  font-family: Noto Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  line-height: 27px;
+
+  color: #f9f9f9;
+}
+.carousel {
+  background: #f85032; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #e73827, #f85032); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #e73827,
+    #f85032
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.products {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  column-gap: 20px;
 }
 </style>

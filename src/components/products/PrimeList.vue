@@ -1,9 +1,7 @@
 <template>
   <div class="pa-5">
     <div class="text-center mt-5">
-      <span class="section-title white--text"
-        >Últimas novidades: Galo e Renata
-      </span>
+      <span class="section-title white--text">Últimas novidades: Galo e Renata </span>
     </div>
     <v-row justify="center">
       <v-col v-for="n in 4" :key="n" cols="12" sm="2">
@@ -23,9 +21,7 @@
               </div>
               <div class="text-center"><span>R$ 50,00</span></div>
               <div class="mt-5">
-                <v-btn block rounded depressed color="#FF2A4B" dark
-                  >Adicionar
-                </v-btn>
+                <v-btn block rounded depressed color="#FF2A4B" dark>Adicionar </v-btn>
               </div>
             </div>
           </v-row>
@@ -42,11 +38,11 @@ export default {};
 <style>
 .section-title {
   font-size: 25px;
-  font-family: "Staatliches", cursive !important;
+  font-family: 'Staatliches', cursive !important;
   color: #2f404e;
 }
 .title-product {
   font-size: 16px;
-  font-family: "Staatliches", cursive !important;
+  font-family: 'Staatliches', cursive !important;
 }
 </style>

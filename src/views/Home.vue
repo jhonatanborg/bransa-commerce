@@ -14,13 +14,13 @@
 </template>
 <script>
 // @ is an alias to /src
-import Carousel from "@/components/carousel/Carousel.vue";
-import Brands from "@/components/market/Brands.vue";
-import PrimeList from "@/components/products/PrimeList.vue";
-// import Categories from "@/components/categories/Categories.vue";
+import Carousel from '@/components/carousel/Carousel';
+import Brands from '@/components/market/Brands';
+import PrimeList from '@/components/products/PrimeList';
+// import Categories from "@/components/categories/Categories";
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: {
     Carousel,
     Brands,

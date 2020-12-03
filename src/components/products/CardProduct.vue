@@ -1,32 +1,25 @@
 <template>
   <div>
-    <v-card
-      class="pa-5 "
-      flat
-      raised
-      color="white"
-      @click="openDialog(product)"
-    >
-      <div class="d-flex justify-center">
-        <v-avatar class="text-center  " tile size="150">
-          <v-img
-            class="red"
-            aspect-ratio="1.1"
-            width="100%"
-            src="https://dydyo.com.br/site/data/uploads/2018/07/37053050_1735985906489585_8325026304877395968_n.jpg"
-          >
-          </v-img>
-        </v-avatar>
-      </div>
-      <div class="my-3">
+    <v-card @click="openDialog(product)" link flat class="pa-5" height="320" max-width="100%">
+      <div>
+        <div>
+          <v-img aspect-ratio="1.1" :src="image(product.produto_imagem)"> </v-img>
+        </div>
         <div class="title-product">
-          <span>{{ product.produto_descricao }}</span>
+          <span v-text="product.produto_descricao"> </span>
         </div>
-        <div class="text-center" v-text="convertMoney(product.produto_valor)">
-          <span></span>
+        <div class="my-2">
+          <small v-text="'CÓD: ' + product.produto_codigo"></small>
         </div>
-        <div class="mt-5">
-          <v-btn block depressed color="#FF2A4B" dark>Comprar </v-btn>
+        <div>
+          <span v-if="auth" v-text="convertMoney(product.produto_valor)"> </span>
+          <div v-else>
+            <v-chip color="#00c996" text-color="white" dark small>
+              <b class=" mx-2">
+                Ver preço
+              </b>
+            </v-chip>
+          </div>
         </div>
       </div>
     </v-card>
@@ -34,17 +27,35 @@
 </template>
 
 <script>
-import Mixins from "@/mixins/mixins.js";
+import Mixins from '@/mixins/mixins';
 
 export default {
   mixins: [Mixins],
   props: {
     product: Object,
   },
+  computed: {
+    auth() {
+      return this.$store.state.user.user;
+    },
+  },
   methods: {
     openDialog(product) {
-      this.$store.commit("product/request", ["productModal", product]);
-      this.$store.commit("product/request", ["DialogProduct", true]);
+      if (this.auth) {
+        this.$store.commit('product/request', ['productModal', product]);
+        this.$store.commit('product/request', ['DialogProduct', true]);
+      } else {
+        this.$router.push({ name: 'session' });
+      }
+    },
+    image(image) {
+      if (image && image.indexOf('blob') >= 0) {
+        return image;
+      }
+      if (!image) {
+        return 'https://i.imgur.com/Ho0V1gI.jpg';
+      }
+      return this.$store.state.server + image;
     },
   },
 };
@@ -52,14 +63,17 @@ export default {
 
 <style>
 .title-product {
-  text-overflow: ellipsis;
+  margin-top: 10px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 12px;
+  text-transform: lowercase;
   overflow: hidden;
-  font-size: 15px !important;
   text-overflow: ellipsis;
   display: -webkit-box;
-  /* line-height: 36px; */
-  max-height: 62px;
-  -webkit-line-clamp: 1;
+  -webkit-line-clamp: 2; /* number of lines to show */
   -webkit-box-orient: vertical;
 }
 </style>

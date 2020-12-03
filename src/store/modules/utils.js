@@ -1,5 +1,5 @@
-import actionsGlobal from "../actions";
-import mutationsGlobal from "../mutations";
+import actionsGlobal from '../actions';
+import mutationsGlobal from '../mutations';
 
 const utils = {
   namespaced: true,

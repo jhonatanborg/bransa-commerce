@@ -1,52 +1,21 @@
 <template>
-  <v-app-bar color="white" app id="app-bar" flat height="90px">
+  <v-app-bar app color="white" flat>
     <div class="d-flex justify-center align-center">
-      <div>
-        <v-avatar tile size="50">
-          <v-img width="100%" src="@/assets/images/online.svg"></v-img
-        ></v-avatar>
-      </div>
-      <div>
-        <span class="title-company">Bransa</span>
-      </div>
+      <router-link :to="{ name: 'Home' }">
+        <v-img width="100px" src="@/assets/images/brand.png"></v-img>
+      </router-link>
     </div>
-
     <v-spacer></v-spacer>
-    <div class="hidden-sm-and-down mr-3">
-      <v-btn
-        class="text-capitalize"
-        rounded
-        large
-        dense
-        :to="{ name: 'login' }"
-        text
-        >Iniciar sessão
-      </v-btn>
-
-      <v-btn
-        class="text-capitalize"
-        large
-        rounded
-        dense
-        :to="{ name: 'list-products' }"
-        text
-        >Produtos
-      </v-btn>
-    </div>
-    <div class="hidden-sm-and-down">
-      <v-btn
-        large
-        depressed
-        color="#FF2A4B"
-        dark
-        class="text-capitalize"
-        rounded
+    <div class="nav-links hidden-sm-and-down">
+      <router-link :to="{ name: 'list-products' }">Produtos</router-link>
+      <router-link v-if="!auth" :to="{ name: 'session' }">Iniciar sessão</router-link>
+      <router-link v-else :to="{ name: 'my-account' }">Minha Conta</router-link>
+      <a @click="openSale()" href="#" id="cart"
+        ><v-icon size="20">mdi-cart</v-icon> Carrinho
+        <span class="badge"> {{ sale.length }}</span></a
       >
-        <v-icon class="mr-2">mdi-basket-outline</v-icon>Carrinho
-        <b class="notify">1</b>
-      </v-btn>
+      <span> </span>
     </div>
-
     <div v-if="$vuetify.breakpoint.smAndDown">
       <v-icon color="black">mdi-menu</v-icon>
     </div>
@@ -54,12 +23,61 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    sale() {
+      return this.$store.state.sale.sale || {};
+    },
+    auth() {
+      return this.$store.state.user.user;
+    },
+  },
+  methods: {
+    openSale() {
+      if (this.$store.state.sale.sale.length > 0) {
+        this.$store.commit('sale/request', ['cart', { open: true, step: 1 }]);
+      } else {
+        this.$store.commit('sale/request', ['cart', { open: true, step: 3 }]);
+      }
+    },
+  },
+};
 </script>
 
 <style>
-.title-company {
-  font-weight: 900;
-  font-size: 20px;
+.nav-links {
+  display: inline;
+  font-family: 'Montserrat', sans-serif !important;
+  float: right;
+  font-size: 18px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  margin: 0 30px;
+}
+
+.nav-links > a {
+  display: inline-block;
+  text-decoration: none;
+  color: #efefef;
+  margin: 0 30px;
+}
+
+.nav-links > a:hover {
+  color: #ff5353;
+}
+.badge {
+  background-color: #6394f8;
+  border-radius: 10px;
+  color: white;
+  display: inline-block;
+  font-size: 12px;
+  line-height: 1;
+  padding: 3px 7px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
 }
 </style>

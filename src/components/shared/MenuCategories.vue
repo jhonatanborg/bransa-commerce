@@ -10,9 +10,7 @@
     </div>
     <div class="hidden-sm-and-down mr-3">
       <div>
-        <v-btn rounded large dense :to="{ name: 'session' }" text
-          >Iniciar sessão
-        </v-btn>
+        <v-btn rounded large dense :to="{ name: 'session' }" text>Iniciar sessão </v-btn>
       </div>
     </div>
     <div v-if="$vuetify.breakpoint.smAndDown">

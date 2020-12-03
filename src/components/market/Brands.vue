@@ -4,7 +4,7 @@
       <span class="section-title">As melhores marcas estão no Bransa</span>
     </div>
     <div></div>
-    <swiper class="swiper my-5" :options="swiperOption">
+    <!-- <swiper class="swiper my-5" :options="swiperOption">
       <swiper-slide>
         <v-card class="pa-5" max-width="100px">
           <v-avatar tile size="100">
@@ -74,10 +74,7 @@
       <swiper-slide>
         <v-card class="pa-5" max-width="100px">
           <v-avatar tile size="100">
-            <v-img
-              aspect-ratio="1.1"
-              src="https://www.auroraalimentos.com.br/img/logo-aurora.png"
-            >
+            <v-img aspect-ratio="1.1" src="https://www.auroraalimentos.com.br/img/logo-aurora.png">
             </v-img
           ></v-avatar> </v-card
       ></swiper-slide>
@@ -150,15 +147,12 @@
       <swiper-slide>
         <v-card class="pa-5" max-width="100px">
           <v-avatar tile size="100">
-            <v-img
-              aspect-ratio="1.1"
-              src="https://www.auroraalimentos.com.br/img/logo-aurora.png"
-            >
+            <v-img aspect-ratio="1.1" src="https://www.auroraalimentos.com.br/img/logo-aurora.png">
             </v-img
           ></v-avatar> </v-card
       ></swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
-    </swiper>
+    </swiper> -->
   </div>
 </template>
 
@@ -171,7 +165,7 @@ export default {
         spaceBetween: 5,
         centeredSlides: false,
         pagination: {
-          el: ".swiper-pagination",
+          el: '.swiper-pagination',
           clickable: true,
         },
       },
@@ -182,11 +176,11 @@ export default {
 
 <style>
 #brands {
-  font-family: "Staatliches", cursive !important;
+  font-family: 'Staatliches', cursive !important;
 }
 .section-title {
   font-size: 25px;
-  font-family: "Staatliches", cursive !important;
+  font-family: 'Staatliches', cursive !important;
   color: #2f404e;
 }
 </style>

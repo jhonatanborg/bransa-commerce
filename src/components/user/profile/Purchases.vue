@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import Mixins from "@/mixins/mixins.js";
+import Mixins from '@/mixins/mixins.js';
 
 export default {
   mixins: [Mixins],
@@ -58,14 +58,14 @@ export default {
   },
   methods: {
     goToPurchase(purchase) {
-      this.$store.commit("sale/request", ["purchaseDetails", purchase]);
-      this.$router.push("pedidos-detalhes/" + purchase.id).catch(() => {});
+      this.$store.commit('sale/request', ['purchaseDetails', purchase]);
+      this.$router.push(`pedidos-detalhes/${purchase.id}`).catch(() => {});
     },
     getAll() {
-      this.$store.dispatch("sale/request", {
-        state: "myPurchases",
-        method: "GET",
-        url: "/sale-client",
+      this.$store.dispatch('sale/request', {
+        state: 'myPurchases',
+        method: 'GET',
+        url: '/sale-client',
         noMsg: true,
       });
     },

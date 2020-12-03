@@ -1,29 +1,29 @@
-import Dexie from "dexie";
+import Dexie from 'dexie';
 
 class IndexedDB {
   static async indexedDBRequest(table, data, method) {
-    const db = new Dexie("saledb");
+    const db = new Dexie('bransacart');
     db.version(1).stores({
-      saledb: "++id",
+      bransacart: '++id',
     });
     let consult;
     switch (method) {
-      case "post":
+      case 'post':
         await db.table(table).add(data);
         break;
-      case "get":
+      case 'get':
         await db.table(table).get(data);
         break;
-      case "put":
+      case 'put':
         await db.table(table).put(data);
         break;
-      case "delete":
+      case 'delete':
         await db.table(table).delete(data);
         break;
-      case "getAll":
+      case 'getAll':
         consult = await db.table(table).toArray();
         break;
-      case "deleteAll":
+      case 'deleteAll':
         await db.table(table).clear();
         // localStorage.setItem("saleCompany", "");
         break;
