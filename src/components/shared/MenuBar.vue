@@ -2,7 +2,7 @@
   <v-app-bar app color="white" flat>
     <div class="d-flex justify-center align-center">
       <router-link :to="{ name: 'Home' }">
-        <v-img width="100px" src="@/assets/images/brand.png"></v-img>
+        <v-img width="130px" src="@/assets/images/brand.png"></v-img>
       </router-link>
     </div>
     <v-spacer></v-spacer>

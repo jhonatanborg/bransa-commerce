@@ -1,12 +1,12 @@
 <template>
   <div>
     <v-row dense align="center" justify="center">
-      <v-col sm="8">
+      <v-col sm="6">
         <div class="text-center">
           <v-img width="100%" src="@/assets/images/brand.png"></v-img>
         </div>
       </v-col>
-      <v-col class="pa-0" sm="12">
+      <v-col sm="12">
         <div class="text-center">
           <span
             >Acesse sua conta para comprar <br />
@@ -15,10 +15,10 @@
         </div>
       </v-col>
     </v-row>
-    <v-form ref="login" class="pa-5">
+    <v-form ref="login">
       <div>
         <v-text-field
-          color="red lighten-1"
+          color="primary"
           label="CNPJ ou CPF"
           outlined
           dense
@@ -31,7 +31,7 @@
       </div>
       <div>
         <v-text-field
-          color="red lighten-1"
+          color="primary"
           label="Senha"
           outlined
           dense
@@ -42,11 +42,12 @@
 
       <div>
         <v-btn
+          depressed
           class="text-capitalize font-weight-bold"
           block
           @click="login()"
           dark
-          color="red lighten-1"
+          color="#ff5353"
           >Login</v-btn
         >
       </div>
@@ -57,7 +58,7 @@
           dark
           @click="$emit('first-access')"
           outlined
-          color="red lighten-1"
+          color="#ff5353"
           >Primeiro acesso?
         </v-btn>
       </div>

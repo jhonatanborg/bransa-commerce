@@ -90,15 +90,12 @@
           <CardProduct :product="product" />
         </div>
       </div>
-
-      <Brands />
     </v-container>
     <DialogProduct />
   </div>
 </template>
 
 <script>
-import Brands from '@/components/market/Brands';
 import CardProduct from '@/components/products/CardProduct';
 import DialogProduct from '@/components/products/DialogProduct';
 import Carousel from '@/components/market/Carousel';
@@ -108,7 +105,6 @@ export default {
     CardProduct,
     DialogProduct,
     Carousel,
-    Brands,
   },
   mounted() {
     this.getProducts();
@@ -188,13 +184,9 @@ export default {
 </script>
 
 <style>
-.fixed-bar {
-  position: sticky;
-  position: -webkit-sticky; /* for Safari */
-  top: 0em;
-  z-index: 2;
-}
-.title-category {
+.title-category,
+.item-tel,
+.address {
   font-size: 15px;
   font-family: 'Staatliches', cursive !important;
   color: #2f404e;

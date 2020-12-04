@@ -2,9 +2,7 @@
   <v-container>
     <v-row align="center" class="fill-height" justify="center">
       <v-col cols="12" sm="5">
-        <v-card outlined class="pa-5">
-          <Session />
-        </v-card>
+        <Session />
       </v-col>
     </v-row>
   </v-container>
