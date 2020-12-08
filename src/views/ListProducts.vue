@@ -85,11 +85,11 @@
           </div>
         </v-col>
       </v-row>
-      <div class="products" v-if="selectCategorie">
-        <div v-for="(product, index) in selectCategorie.produtos" :key="index" class="my-3">
+      <v-row v-if="selectCategorie">
+        <v-col sm="2" v-for="(product, index) in selectCategorie.produtos" :key="index">
           <CardProduct :product="product" />
-        </div>
-      </div>
+        </v-col>
+      </v-row>
     </v-container>
     <DialogProduct />
   </div>

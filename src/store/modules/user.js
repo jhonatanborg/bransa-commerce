@@ -11,6 +11,7 @@ const user = {
     user: null,
     userRegister: null,
     addressRegister: null,
+    menuMobile: false,
   }),
 
   getters: {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card @click="openDialog(product)" link flat class="pa-5" height="320" max-width="100%">
+    <v-card @click="openDialog(product)" link flat class="pa-5" max-width="100%">
       <div>
         <div>
           <v-img aspect-ratio="1.1" :src="image(product.produto_imagem)"> </v-img>

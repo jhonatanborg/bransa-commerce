@@ -12,15 +12,34 @@
           <v-divider></v-divider>
           <v-list-item>
             <v-list-item-content>
-              <v-list-item-subtitle>Nome</v-list-item-subtitle>
-              <v-list-item-title>{{ user.name }}</v-list-item-title>
+              <v-list-item-subtitle>Documento</v-list-item-subtitle>
+              <v-list-item-title>{{ user.cliente_cnpj_cpf }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-subtitle>Titulo</v-list-item-subtitle>
+              <v-list-item-title>{{ user.cliente_fantasia_apelido }}</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
           <v-divider></v-divider>
           <v-list-item>
             <v-list-item-content>
               <v-list-item-subtitle>E-mail</v-list-item-subtitle>
-              <v-list-item-title>{{ user.email }}</v-list-item-title>
+              <v-list-item-title>{{ user.cliente_email }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-divider></v-divider>
+          <v-list-item>
+            <v-list-item-content>
+              <v-list-item-subtitle>Endereço</v-list-item-subtitle>
+              <v-list-item-title
+                >{{ user.cliente_municipio }} - {{ user.cliente_uf }}</v-list-item-title
+              >
+              <v-list-item-title
+                >{{ user.cliente_endereco }}, {{ user.cliente_nr }} -
+                {{ user.cliente_cep }}</v-list-item-title
+              >
             </v-list-item-content>
           </v-list-item>
         </v-list>
@@ -34,34 +53,17 @@
 
 <script>
 export default {
-  mounted() {
-    this.getUser();
-  },
-  data: () => ({
-    user: null,
-  }),
-  computed: {},
-  methods: {
-    getUser() {
-      if (localStorage.getItem('token')) {
-        this.$store
-          .dispatch('user/request', {
-            method: 'GET',
-            url: `/client/${localStorage.getItem('user')}`,
-            noMsg: true,
-          })
-          .then(response => {
-            this.user = response.data;
-          })
-          .catch(() => {
-            localStorage.clear();
-            location.reload();
-          });
-      }
+  data: () => ({}),
+  computed: {
+    user() {
+      return this.$store.state.user.user || {};
     },
+  },
+  methods: {
     logout() {
       localStorage.clear();
-      location.reload();
+      this.$router.push('/');
+      window.location.reload();
     },
   },
 };

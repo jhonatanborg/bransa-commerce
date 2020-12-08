@@ -1,12 +1,13 @@
 <template>
   <v-app id="app">
     <MenuBar />
+    <MenuMobile />
     <Sale />
 
     <v-main>
       <router-view></router-view>
     </v-main>
-    <v-footer height="auto">
+    <v-footer width="100%" height="auto">
       <v-row justify="center" align="center" dense>
         <v-col cols="12" sm="4">
           <div>
@@ -49,6 +50,7 @@
 
 <script>
 import MenuBar from '@/components/shared/MenuBar';
+import MenuMobile from '@/components/shared/MenuMobile';
 import Sale from '@/components/sale/Sale';
 
 export default {
@@ -56,6 +58,7 @@ export default {
   components: {
     MenuBar,
     Sale,
+    MenuMobile,
   },
   mounted() {
     this.getSaleIdb();

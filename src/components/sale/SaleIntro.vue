@@ -139,44 +139,35 @@ export default {
         });
     },
     validPurchase() {
-      if (this.pay) {
-        const purchase = this.$store.state.sale.sale;
-        purchase.forEach(element => {
-          delete element.product_name;
-          delete element.id;
+      const products = [];
+      Object.values(this.sale).forEach(value => {
+        products.push({
+          PRODUTO_ID: value.PRODUTO_ID,
+          PRODUTO_ID2: value.PRODUTO_ID2,
+          VENDAITEM_QTDE: value.VENDAITEM_QTDE,
         });
-
-        const sale = {
-          address: this.addressClient,
-          change_for: this.change_for,
-          products: purchase,
-          payment: this.pay.toString(),
-        };
-        sale.address.district_id = sale.address.district_id.id;
-        console.log(sale);
+      });
+      const sale = {
+        ITENS: products,
+        FORMAPGTO_CODIGO: this.pay,
+      };
+      if (sale) {
         this.sendPuchase(sale);
-      } else {
-        this.error = true;
       }
     },
     sendPuchase(sale) {
       this.$store
         .dispatch('sale/request', {
           method: 'POST',
-          url: '/sale-client/',
+          url: '/sale',
           data: sale,
           noMsg: true,
         })
-        .then(resp => {
-          this.$store.commit('sale/request', ['cart', { open: false, step: 1 }]);
-          this.$store.commit('sale/request', ['purchaseDetails', resp.data]);
-          this.$router.push(`pedidos-detalhes/${resp.data.id}`).catch(() => {});
+        .then(() => {
+          this.$store.commit('sale/request', ['cart', { open: true, step: 3 }]);
           this.$store.dispatch('sale/idb', {
             state: 'sale',
             method: 'deleteAll',
-            idb: {
-              table: 'saledb',
-            },
           });
         });
     },

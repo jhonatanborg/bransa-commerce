@@ -16,8 +16,15 @@
       >
       <span> </span>
     </div>
+    <div class="mx-3" v-if="$vuetify.breakpoint.smAndDown">
+      <a @click="openSale()" href="#" id="cart"
+        ><v-icon size="20">mdi-cart</v-icon> <span class="badge"> {{ sale.length }}</span></a
+      >
+    </div>
     <div v-if="$vuetify.breakpoint.smAndDown">
-      <v-icon color="black">mdi-menu</v-icon>
+      <v-icon @click="$store.commit('user/request', ['menuMobile', true])" color="black"
+        >mdi-menu</v-icon
+      >
     </div>
   </v-app-bar>
 </template>
@@ -37,7 +44,7 @@ export default {
       if (this.$store.state.sale.sale.length > 0) {
         this.$store.commit('sale/request', ['cart', { open: true, step: 1 }]);
       } else {
-        this.$store.commit('sale/request', ['cart', { open: true, step: 3 }]);
+        this.$store.commit('sale/request', ['cart', { open: true, step: 2 }]);
       }
     },
   },

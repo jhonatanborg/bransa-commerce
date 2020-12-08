@@ -2,7 +2,7 @@
   <div>
     <div class="d-flex justify-center  align-center">
       <v-card flat max-width="420px" class="fill-height pa-5">
-        <v-window v-model="step">
+        <v-window touchless v-model="step">
           <v-window-item :value="1">
             <Login @pass="setStep(3)" @first-access="setStep(5)" />
           </v-window-item>

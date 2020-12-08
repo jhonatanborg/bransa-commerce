@@ -1,12 +1,12 @@
 <template>
   <div>
     <v-row dense align="center" justify="center">
-      <v-col sm="6">
+      <v-col cols="8" sm="4">
         <div class="text-center">
           <v-img width="100%" src="@/assets/images/brand.png"></v-img>
         </div>
       </v-col>
-      <v-col sm="12">
+      <v-col cols="12" sm="12">
         <div class="text-center">
           <span
             >Acesse sua conta para comprar <br />
@@ -14,55 +14,58 @@
           >
         </div>
       </v-col>
-    </v-row>
-    <v-form ref="login">
-      <div>
-        <v-text-field
-          color="primary"
-          label="CNPJ ou CPF"
-          outlined
-          dense
-          v-mask="['##.###.###/####-##', '###.###.###-##']"
-          v-model="cliente.cliente_cnpj_cpf"
-          :rules="[v => !!v || 'Este campo é obrigatório']"
-          :error="errorValidate"
-          :error-messages="messageValidate"
-        ></v-text-field>
-      </div>
-      <div>
-        <v-text-field
-          color="primary"
-          label="Senha"
-          outlined
-          dense
-          v-model="cliente.cliente_senha"
-        ></v-text-field>
-      </div>
-      <v-alert type="error" dense :value="error"> {{ message }}</v-alert>
+      <v-col cols="10">
+        <v-form ref="login">
+          <div>
+            <v-text-field
+              color="primary"
+              label="CNPJ ou CPF"
+              outlined
+              dense
+              v-mask="['##.###.###/####-##', '###.###.###-##']"
+              v-model="cliente.cliente_cnpj_cpf"
+              :rules="[v => !!v || 'Este campo é obrigatório']"
+              :error="errorValidate"
+              :error-messages="messageValidate"
+            ></v-text-field>
+          </div>
+          <div>
+            <v-text-field
+              color="primary"
+              label="Senha"
+              outlined
+              dense
+              v-model="cliente.cliente_senha"
+            ></v-text-field>
+          </div>
+          <v-alert type="error" dense :value="error"> {{ message }}</v-alert>
 
-      <div>
-        <v-btn
-          depressed
-          class="text-capitalize font-weight-bold"
-          block
-          @click="login()"
-          dark
-          color="#ff5353"
-          >Login</v-btn
-        >
-      </div>
-      <div class="my-5">
-        <v-btn
-          class="text-capitalize font-weight-bold"
-          block
-          dark
-          @click="$emit('first-access')"
-          outlined
-          color="#ff5353"
-          >Primeiro acesso?
-        </v-btn>
-      </div>
-    </v-form>
+          <div>
+            <v-btn
+              depressed
+              class="text-capitalize font-weight-bold"
+              block
+              :loading="loading"
+              @click="login()"
+              dark
+              color="#ff5353"
+              >Login</v-btn
+            >
+          </div>
+          <div class="my-5">
+            <v-btn
+              class="text-capitalize font-weight-bold"
+              block
+              dark
+              @click="$emit('first-access')"
+              outlined
+              color="#ff5353"
+              >Primeiro acesso?
+            </v-btn>
+          </div>
+        </v-form>
+      </v-col>
+    </v-row>
   </div>
 </template>
 

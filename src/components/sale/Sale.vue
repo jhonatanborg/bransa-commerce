@@ -25,10 +25,10 @@
           <v-window v-model="step">
             <v-window-item :value="1"><SaleFirst @next="stepSelector(2)"/></v-window-item>
             <v-window-item :value="2">
-              <PaySelect />
+              <SaleEmpty />
             </v-window-item>
             <v-window-item :value="3">
-              <SaleEmpty />
+              <SaleSuccess />
             </v-window-item>
           </v-window>
         </div>
@@ -40,14 +40,14 @@
 <script>
 import Mixins from '@/mixins/mixins';
 import SaleFirst from '@/components/sale/SaleIntro';
-import PaySelect from '@/components/sale/SalePaySelect';
 import SaleEmpty from '@/components/sale/SaleEmpty';
+import SaleSuccess from '@/components/sale/SaleSuccess';
 
 export default {
   mixins: [Mixins],
   components: {
     SaleFirst,
-    PaySelect,
+    SaleSuccess,
     SaleEmpty,
   },
 

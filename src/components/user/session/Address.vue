@@ -3,7 +3,7 @@
     <small>Endereço de entrega</small>
     <v-form ref="address">
       <v-row>
-        <v-col cols="3" sm="4" class="py-0">
+        <v-col cols="12" sm="4" class="py-0">
           <v-select
             :items="states"
             label="UF"
@@ -13,7 +13,7 @@
             dense
           ></v-select>
         </v-col>
-        <v-col cols="9" sm="8" class="py-0">
+        <v-col cols="12" sm="8" class="py-0">
           <v-text-field
             label="Municipio"
             outlined
@@ -111,12 +111,12 @@ export default {
         'TO',
       ],
       address: {
-        cliente_bairro: 'MARIA VINDILINA',
-        cliente_cep: '78520000',
-        cliente_complemento: 'esquina com mangueiras',
-        cliente_endereco: 'rua amendoerias',
-        cliente_municipio: 'Guarantã do norte',
-        cliente_nr: '49',
+        cliente_bairro: null,
+        cliente_cep: null,
+        cliente_complemento: null,
+        cliente_endereco: null,
+        cliente_municipio: null,
+        cliente_nr: null,
         cliente_uf: 'MT',
       },
     };

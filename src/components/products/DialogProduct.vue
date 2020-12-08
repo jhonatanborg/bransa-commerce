@@ -86,6 +86,8 @@ export default {
         VENDAITEM_VLUNIT: this.productModal.produto_valor,
         VENDAITEM_VLTOTAL: parseFloat(this.Total),
         VENDAITEM_DESCRICAO: this.productModal.produto_descricao,
+        PRODUTO_ID: this.productModal.produto_id,
+        PRODUTO_ID2: this.productModal.produto_id2,
       };
       this.$store.dispatch('sale/idb', {
         state: 'sale',
