@@ -1,12 +1,6 @@
 <template>
   <div>
-    <div class="pa-5 carousel">
-      <div class="title-carousel my-3">
-        <span>Produtos em destaque</span>
-      </div>
-      <Carousel />
-    </div>
-
+    <Carousel />
     <v-container fluid>
       <v-row no-gutters dense justify="start" align="center">
         <v-col>

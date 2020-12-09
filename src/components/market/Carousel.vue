@@ -1,42 +1,47 @@
 <template>
-  <carousel
-    class="mx-10"
-    :perPageCustom="[
-      [768, 1],
-      [1024, 5],
-    ]"
-    :navigationClickTargetSize="10"
-    :navigationEnabled="true"
-    :paginationEnabled="false"
-    navigationNextLabel="<i class='material-icons'>arrow_forward_ios</i>"
-    navigationPrevLabel="<i class='material-icons'>arrow_back_ios</i>"
-  >
-    <slide :navigationNextLabel="'Próximo'" v-for="(item, index) in featured" :key="index">
-      <v-card @click="openDialog(item)" max-width="240px" height="100%" link flat class="pa-5">
-        <div>
-          <v-avatar size="100%" tile>
-            <v-img :src="image(item.produto_imagem)"> </v-img>
-          </v-avatar>
-          <div class="item-title-product">
-            <span v-text="item.produto_descricao"> </span>
-          </div>
-          <div class="my-3">
-            <small v-text="'CÓD: ' + item.produto_codigo"></small>
-          </div>
+  <div class="pa-5 carousel" v-if="featured && featured.length > 0">
+    <div class="title-carousel my-3">
+      <span>Produtos em destaque </span>
+    </div>
+    <carousel
+      class="mx-10"
+      :perPageCustom="[
+        [768, 1],
+        [1024, 5],
+      ]"
+      :navigationClickTargetSize="10"
+      :navigationEnabled="true"
+      :paginationEnabled="false"
+      navigationNextLabel="<i class='material-icons'>arrow_forward_ios</i>"
+      navigationPrevLabel="<i class='material-icons'>arrow_back_ios</i>"
+    >
+      <slide :navigationNextLabel="'Próximo'" v-for="(item, index) in featured" :key="index">
+        <v-card @click="openDialog(item)" max-width="240px" height="100%" link flat class="pa-5">
           <div>
-            <span v-if="auth" v-text="convertMoney(item.produto_valor)"> </span>
-            <div v-else>
-              <v-chip color="#00c996" text-color="white" dark>
-                <b class=" mx-2">
-                  Ver preço
-                </b>
-              </v-chip>
+            <v-avatar size="100%" tile>
+              <v-img :src="image(item.produto_imagem)"> </v-img>
+            </v-avatar>
+            <div class="item-title-product">
+              <span v-text="item.produto_descricao"> </span>
+            </div>
+            <div class="my-3">
+              <small v-text="'CÓD: ' + item.produto_codigo"></small>
+            </div>
+            <div>
+              <span v-if="auth" v-text="convertMoney(item.produto_valor)"> </span>
+              <div v-else>
+                <v-chip color="#00c996" text-color="white" dark>
+                  <b class=" mx-2">
+                    Ver preço
+                  </b>
+                </v-chip>
+              </div>
             </div>
           </div>
-        </div>
-      </v-card>
-    </slide>
-  </carousel>
+        </v-card>
+      </slide>
+    </carousel>
+  </div>
 </template>
 
 <script>
@@ -55,7 +60,7 @@ export default {
   },
   computed: {
     featured() {
-      return this.$store.state.product.featured || [];
+      return this.$store.state.product.featured;
     },
     auth() {
       return this.$store.state.user.user;
