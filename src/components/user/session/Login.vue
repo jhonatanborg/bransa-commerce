@@ -35,6 +35,9 @@
               label="Senha"
               outlined
               dense
+              :type="show3 ? 'text' : 'password'"
+              @click:append="show3 = !show3"
+              :append-icon="show3 ? 'mdi-eye' : 'mdi-eye-off'"
               v-model="cliente.cliente_senha"
             ></v-text-field>
           </div>
@@ -89,6 +92,7 @@ export default {
       error: false,
       errorValidate: false,
       messageValidate: null,
+      show3: false,
     };
   },
   methods: {

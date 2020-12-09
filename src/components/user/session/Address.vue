@@ -1,6 +1,8 @@
 <template>
   <div>
-    <small>Endereço de entrega</small>
+    <div class="my-3">
+      <span>Endereço de entrega</span>
+    </div>
     <v-form ref="address">
       <v-row>
         <v-col cols="12" sm="4" class="py-0">
@@ -64,11 +66,15 @@
             label="Complemento"
             outlined
             dense
-            :rules="[v => !!v || 'Este campo é obrigatório']"
           ></v-text-field>
         </v-col>
         <v-col>
-          <v-btn x-large @click="setAddress()" block dark deprEsted color="red lighten-1"
+          <v-btn large outlined @click="$emit('return')" block dark color="red lighten-1"
+            >Voltar</v-btn
+          >
+        </v-col>
+        <v-col>
+          <v-btn large @click="setAddress()" block dark depressed color="red lighten-1"
             >Avançar</v-btn
           >
         </v-col>

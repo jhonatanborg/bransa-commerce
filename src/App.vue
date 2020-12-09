@@ -47,6 +47,14 @@
         </v-col>
       </v-row>
     </v-footer>
+    <v-snackbar color="primary" :timeout="-1" right top :value="$store.state.sale.snack">
+      1 item adicionado a sacola
+      <template v-slot:action="{ attrs }">
+        <v-btn color="white" text v-bind="attrs" @click="$store.state.sale.snack = false">
+          Fechar
+        </v-btn>
+      </template>
+    </v-snackbar>
   </v-app>
 </template>
 

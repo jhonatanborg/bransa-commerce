@@ -13,7 +13,7 @@
             <Pass @success="setStep(6)" />
           </v-window-item>
           <v-window-item :value="4">
-            <Address @pass="setStep(3)" />
+            <Address @pass="setStep(3)" @return="setStep(2)" />
           </v-window-item>
           <v-window-item :value="5">
             <VerifyAccount @pass="setStep(3)" @register="setStep(2)" @login="setStep(1)" />

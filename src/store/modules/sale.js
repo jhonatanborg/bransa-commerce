@@ -14,6 +14,7 @@ const sale = {
     purchaseDetails: null,
     districts: null,
     addressDelivery: null,
+    snack: false,
   },
   mutations: { ...mutationsGlobal },
 

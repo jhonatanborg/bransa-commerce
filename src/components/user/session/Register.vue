@@ -146,9 +146,6 @@ export default {
           this.errorValidate = true;
           this.messageValidate = 'CNPJ inválido! Tente com um válido';
         }
-      } else {
-        this.errorValidate = true;
-        this.messageValidate = 'CNPJ inválido! Tente com um válido';
       }
       if (
         this.$refs.client.validate() &&

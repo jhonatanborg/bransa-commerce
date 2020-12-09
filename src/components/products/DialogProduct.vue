@@ -18,24 +18,37 @@
           </v-col>
         </v-row>
       </v-img>
+
       <div class="my-5">
         <div class="title-product px-5">
           <span v-text="productModal.produto_descricao"></span>
         </div>
       </div>
-      <v-toolbar max-height="80px" floating bottom>
-        <v-row align="center">
+      <v-toolbar height="80px" floating bottom>
+        <v-row align="center" justify="center">
           <v-col cols="4" sm="4">
             <v-text-field
               v-model="quantity"
               type="number"
+              :error="error"
               hide-details
-              solo
+              outlined
+              label="Quantidade"
+              :error-messages="error ? 'Valor inválido' : ''"
               :menu-props="{ top: true, offsetY: true }"
             ></v-text-field
           ></v-col>
           <v-col cols="8" sm="8">
-            <v-btn dark type="submit" block @click="setSale" x-large depressed color="#FF2A4B">
+            <v-btn
+              :disabled="AddProductButton"
+              type="submit"
+              block
+              :dark="!AddProductButton"
+              @click="setSale"
+              x-large
+              depressed
+              color="#FF2A4B"
+            >
               <div>
                 Adicionar
                 <span class="font-weight-bold" v-text="convertMoney(Total)"> </span>
@@ -62,6 +75,7 @@ export default {
       comment: null,
       complements: [],
       sale: null,
+      error: false,
     };
   },
   computed: {
@@ -69,33 +83,50 @@ export default {
       return this.$store.state.product.productModal || [];
     },
     Total() {
-      const total = 0;
-      return (
-        parseFloat(total) + parseFloat(this.productModal.produto_valor) * parseFloat(this.quantity)
-      );
+      if (this.quantity > 0) {
+        const total = 0;
+        return (
+          parseFloat(total) +
+          parseFloat(this.productModal.produto_valor) * parseFloat(this.quantity)
+        );
+      }
+      return 0;
+    },
+    AddProductButton() {
+      if (this.quantity <= 0) {
+        return true;
+      }
+      return false;
     },
   },
   methods: {
     close() {
       this.$store.commit('product/request', ['DialogProduct', false]);
+      this.error = false;
     },
     setSale() {
-      const venda = {
-        EMPRESA_ID: '4',
-        VENDAITEM_QTDE: this.quantity,
-        VENDAITEM_VLUNIT: this.productModal.produto_valor,
-        VENDAITEM_VLTOTAL: parseFloat(this.Total),
-        VENDAITEM_DESCRICAO: this.productModal.produto_descricao,
-        PRODUTO_ID: this.productModal.produto_id,
-        PRODUTO_ID2: this.productModal.produto_id2,
-      };
-      this.$store.dispatch('sale/idb', {
-        state: 'sale',
-        data: venda,
-        method: 'post',
-      });
-      // this.$store.commit("product/request", ["DialogProduct", false]);
-      this.sale = null;
+      if (this.quantity > 0) {
+        const venda = {
+          EMPRESA_ID: '4',
+          VENDAITEM_QTDE: this.quantity,
+          VENDAITEM_VLUNIT: this.productModal.produto_valor,
+          VENDAITEM_VLTOTAL: parseFloat(this.Total),
+          VENDAITEM_DESCRICAO: this.productModal.produto_descricao,
+          PRODUTO_ID: this.productModal.produto_id,
+          PRODUTO_ID2: this.productModal.produto_id2,
+        };
+        this.$store.dispatch('sale/idb', {
+          state: 'sale',
+          data: venda,
+          method: 'post',
+        });
+        this.$store.commit('product/request', ['DialogProduct', false]);
+        this.$store.commit('sale/request', ['snack', true]);
+        this.sale = null;
+        this.error = false;
+      } else {
+        this.error = true;
+      }
     },
     image(image) {
       if (image && image.indexOf('blob') >= 0) {

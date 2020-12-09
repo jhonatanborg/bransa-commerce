@@ -90,12 +90,6 @@ export default {
     sale() {
       return this.$store.state.sale.sale;
     },
-    saleStatus() {
-      if (this.sale.length <= 0) {
-        return this.$emit('next');
-      }
-      return 0;
-    },
     subTotal() {
       let sum;
       if (this.sale) {
@@ -134,7 +128,7 @@ export default {
         })
         .then(resp => {
           if (resp.length === 0) {
-            this.$store.commit('sale/request', ['cart', { open: true, step: 4 }]);
+            this.$store.commit('sale/request', ['cart', { open: true, step: 2 }]);
           }
         });
     },
