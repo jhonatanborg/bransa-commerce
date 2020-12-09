@@ -39,8 +39,10 @@
         </v-col>
         <v-col cols="auto">
           <small>
-            &copy;2018 —
-            <strong>Vedas Sistemas</strong>
+            &copy;2020 —
+            <a href="http://vedassistemas.com.br" target="_blank" rel="noopener noreferrer">
+              <strong>vedassistemas.com.br</strong>
+            </a>
           </small>
         </v-col>
       </v-row>
