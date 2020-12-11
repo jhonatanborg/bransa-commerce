@@ -16,7 +16,14 @@
       navigationPrevLabel="<i class='material-icons'>arrow_back_ios</i>"
     >
       <slide :navigationNextLabel="'Próximo'" v-for="(item, index) in featured" :key="index">
-        <v-card @click="openDialog(item)" max-width="240px" height="100%" link flat class="pa-5">
+        <v-card
+          @click="openDialog(item)"
+          max-width="240px"
+          height="100%"
+          link
+          flat
+          class="pa-5 mx-2"
+        >
           <div>
             <v-avatar size="100%" tile>
               <v-img :src="image(item.produto_imagem)"> </v-img>

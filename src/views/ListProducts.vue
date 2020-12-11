@@ -80,7 +80,7 @@
         </v-col>
       </v-row>
       <v-row v-if="selectCategorie">
-        <v-col sm="2" v-for="(product, index) in selectCategorie.produtos" :key="index">
+        <v-col cols="6" sm="2" v-for="(product, index) in selectCategorie.produtos" :key="index">
           <CardProduct :product="product" />
         </v-col>
       </v-row>
