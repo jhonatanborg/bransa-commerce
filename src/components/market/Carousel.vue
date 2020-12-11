@@ -4,9 +4,12 @@
       <span>Produtos em destaque </span>
     </div>
     <carousel
-      class="mx-10"
+      class="mx-7"
       :perPageCustom="[
         [768, 1],
+        [320, 1],
+        [262, 1],
+        [500, 1],
         [1024, 5],
       ]"
       :navigationClickTargetSize="10"
@@ -16,14 +19,7 @@
       navigationPrevLabel="<i class='material-icons'>arrow_back_ios</i>"
     >
       <slide :navigationNextLabel="'Próximo'" v-for="(item, index) in featured" :key="index">
-        <v-card
-          @click="openDialog(item)"
-          max-width="240px"
-          height="100%"
-          link
-          flat
-          class="pa-5 mx-2"
-        >
+        <v-card @click="openDialog(item)" max-width="240px" height="100%" link flat class="pa-5">
           <div>
             <v-avatar size="100%" tile>
               <v-img :src="image(item.produto_imagem)"> </v-img>
