@@ -30,7 +30,7 @@
         >
           <div>
             <v-avatar size="100%" tile>
-              <v-img :src="image(item.produto_imagem)"> </v-img>
+              <v-img aspect-ratio="1.1" :src="image(item.produto_imagem)"> </v-img>
             </v-avatar>
             <div class="item-title-product">
               <span v-text="item.produto_descricao"> </span>
