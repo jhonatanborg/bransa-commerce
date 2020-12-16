@@ -2,22 +2,20 @@
   <v-dialog
     transition="dialog-transition"
     max-width="500px"
-    scrollable
     width="500"
     @click:outside="close"
     :value="$store.state.product.DialogProduct"
     :fullscreen="$vuetify.breakpoint.xsOnly"
   >
     <v-card v-if="productModal">
-      <v-img aspect-ratio="1.1" :src="image(productModal.produto_imagem)">
-        <v-row justify="end">
-          <v-col cols="auto">
-            <v-btn class="mr-3" x-small color="white" fab @click="close">
-              <v-icon size="20">mdi-close</v-icon>
-            </v-btn>
-          </v-col>
-        </v-row>
-      </v-img>
+      <v-btn absolute right class="mt-4" x-small color="white" fab @click="close">
+        <v-icon size="20">mdi-close</v-icon>
+      </v-btn>
+      <v-row no-gutters justify="center">
+        <v-col cols="10">
+          <v-img contain aspect-ratio="1.1" :src="image(productModal.produto_imagem)"> </v-img>
+        </v-col>
+      </v-row>
 
       <div class="my-5">
         <div class="title-product px-5">

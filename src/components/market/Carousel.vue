@@ -25,12 +25,13 @@
           max-width="270px"
           height="100%"
           link
+          contain
           flat
           class="pa-5 mx-2"
         >
           <div>
             <v-avatar size="100%" tile>
-              <v-img aspect-ratio="1.1" :src="image(item.produto_imagem)"> </v-img>
+              <v-img contain aspect-ratio="1.1" :src="image(item.produto_imagem)"> </v-img>
             </v-avatar>
             <div class="item-title-product">
               <span v-text="item.produto_descricao"> </span>

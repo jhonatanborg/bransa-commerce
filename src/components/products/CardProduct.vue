@@ -3,7 +3,7 @@
     <v-card @click="openDialog(product)" link flat class="pa-5" max-width="100%">
       <div>
         <div>
-          <v-img aspect-ratio="1.1" :src="image(product.produto_imagem)"> </v-img>
+          <v-img contain aspect-ratio="1.1" :src="image(product.produto_imagem)"> </v-img>
         </div>
         <div class="title-product">
           <span v-text="product.produto_descricao"> </span>
