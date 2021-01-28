@@ -26,11 +26,12 @@
         <v-row align="center" justify="center">
           <v-col cols="4" sm="4">
             <v-text-field
-              v-model="quantity"
               type="number"
+              v-model="quantity"
               :error="error"
               hide-details
               outlined
+              :rules="rules"
               label="Quantidade"
               :error-messages="error ? 'Valor inválido' : ''"
               :menu-props="{ top: true, offsetY: true }"
@@ -68,17 +69,39 @@ export default {
     return {
       main: 'https://i.imgur.com/FhzGn2D.png',
       dialog: false,
-      quantity: 1,
       itemQuantity: [1, 2, 3, 4, 5, 6, 7, 8, 9],
       comment: null,
       complements: [],
       sale: null,
       error: false,
+      quantity: 1,
+      rules: [
+        v => (v && v >= this.productModal.produto_vendaminima) || 'Loan should be above £5000',
+      ],
     };
+  },
+  watch: {
+    productIdSum() {
+      if (this.productModal.produto_vendaminima && this.productModal.produto_vendaminima >= 0) {
+        this.quantity = this.productModal.produto_vendaminima;
+      } else {
+        this.quantity = 1;
+      }
+    },
+    // quantity(value) {
+    //   if (this.productModal.produto_vendaminima && this.productModal.produto_vendaminima >= 0) {
+    //     if (value <= this.productModal.produto_vendaminima) {
+    //       this.quantity = this.productModal.produto_vendaminima;
+    //     }
+    //   }
+    // },
   },
   computed: {
     productModal() {
       return this.$store.state.product.productModal || [];
+    },
+    productIdSum() {
+      return this.productModal.produto_id + this.productModal.produto_id2;
     },
     Total() {
       if (this.quantity > 0) {
@@ -91,10 +114,18 @@ export default {
       return 0;
     },
     AddProductButton() {
-      if (this.quantity <= 0) {
+      if (
+        this.quantity <= 0 ? true : false || this.quantity < this.productModal.produto_vendaminima
+      ) {
         return true;
       }
       return false;
+    },
+    quantityMinimal() {
+      if (this.productModal.produto_vendaminima && this.productModal.produto_vendaminima >= 0) {
+        return this.productModal.produto_vendaminima;
+      }
+      return this.quantity;
     },
   },
   methods: {
@@ -135,6 +166,11 @@ export default {
       }
       return this.$store.state.server + image;
     },
+    // eventValue(e) {
+    //   if (this.productModal.produto_vendaminima && this.productModal.produto_vendaminima >= 0) {
+    //     this.quantity += e;
+    //   }
+    // },
   },
 };
 </script>

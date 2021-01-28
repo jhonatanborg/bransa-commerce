@@ -1,5 +1,10 @@
 <template>
   <div>
+    <v-toolbar v-if="message" flat color="grey darken-3" dark>
+      <div class="text-center">
+        <span>{{ message }}</span>
+      </div>
+    </v-toolbar>
     <Carousel />
     <v-container fluid>
       <v-row no-gutters dense justify="start" align="center">
@@ -105,6 +110,7 @@ export default {
   },
   data() {
     return {
+      message: 'As melhores marcas estão no Bransa',
       descriptionLimit: 60,
       entries: [],
       isLoading: false,

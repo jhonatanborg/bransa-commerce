@@ -1,7 +1,7 @@
 <template>
   <div class="pa-5 carousel" v-if="featured && featured.length > 0">
-    <div class="title-carousel my-3">
-      <span>Produtos em destaque </span>
+    <div class="my-3 white--text">
+      <span class="headline">Produtos em destaque</span>
     </div>
     <carousel
       class="mx-10"
