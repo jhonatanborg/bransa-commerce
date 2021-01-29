@@ -19,10 +19,12 @@
         </div>
         <div class="my-3">
           <h4 color="grey lighten-5">
-            Não sabe o que comer? Dezenas de delicias esperam por você!
+            Adicione produtos ao carrinho e finalize seu pedido!
           </h4>
         </div>
-        <v-btn large color="red lighten-1" @click="closeSale()" dark>Veja nossos produtos</v-btn>
+        <v-btn large color="red lighten-1" @click="closeSale()" depressed dark
+          >Veja nossos produtos</v-btn
+        >
       </div>
     </div>
   </div>
