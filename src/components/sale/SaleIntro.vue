@@ -25,7 +25,9 @@
         </v-list-item-action>
       </v-list-item>
     </v-card>
-
+    <v-card class="pa-5 grey lighten-4 item-min-purchase" flat>
+      A disponibilidade dos produtos está sujeita aos seus respectivos estoques.
+    </v-card>
     <div class="details pa-4 my-5">
       <div class="">
         <span class="font-weight-bold">Detalhes</span>

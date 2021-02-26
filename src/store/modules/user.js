@@ -12,6 +12,7 @@ const user = {
     userRegister: null,
     addressRegister: null,
     menuMobile: false,
+    message: null,
   }),
 
   getters: {

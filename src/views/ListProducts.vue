@@ -107,6 +107,7 @@ export default {
   },
   mounted() {
     this.getProducts();
+    this.getMessage();
   },
   data() {
     return {
@@ -178,6 +179,18 @@ export default {
         url,
         noMsg: false,
       });
+    },
+    getMessage() {
+      this.$store
+        .dispatch('user/request', {
+          method: 'GET',
+          url: '/mensagem/?empresa_id=4',
+          noMsg: true,
+        })
+        .then(resp => {
+          this.message = resp.data[0].mensagem;
+          this.$store.commit('user/request', ['message', resp.data[0].mensagem]);
+        });
     },
   },
 };
