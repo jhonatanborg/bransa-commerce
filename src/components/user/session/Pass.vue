@@ -47,6 +47,7 @@ export default {
             noMsg: true,
           })
           .then(response => {
+            console.log(response.data);
             localStorage.setItem('user', JSON.stringify(response.data));
             localStorage.setItem('token', response.data.token);
             this.$router.push('/');

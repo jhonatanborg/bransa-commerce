@@ -1,8 +1,8 @@
 <template>
   <div>
-    <v-toolbar v-if="message" flat color="grey darken-3" dark>
-      <div class="text-center">
-        <span>{{ message }}</span>
+    <v-toolbar height="100px" v-if="message" flat color="grey darken-3" dark>
+      <div class="text-left">
+        <small>{{ message }}</small>
       </div>
     </v-toolbar>
     <Carousel />
