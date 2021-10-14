@@ -19,7 +19,7 @@
           >
         </div>
         <v-col cols="12">
-          <v-btn to="/" color="red lighten-1" block depressed dark>Entendi</v-btn>
+          <v-btn to="/" color="#3868E3" block depressed dark>Entendi</v-btn>
         </v-col>
       </v-col>
     </v-row>

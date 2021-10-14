@@ -15,9 +15,7 @@
           <span v-if="auth" v-text="convertMoney(product.produto_valor)"> </span>
           <div v-else>
             <v-chip color="#00c996" text-color="white" dark small>
-              <b class=" mx-2">
-                Ver preço
-              </b>
+              <b class="mx-2"> Ver preço </b>
             </v-chip>
           </div>
         </div>
@@ -53,7 +51,7 @@ export default {
         return image;
       }
       if (!image) {
-        return 'https://i.imgur.com/Ho0V1gI.jpg';
+        return 'https://i.imgur.com/jcWYGjx.png';
       }
       return this.$store.state.server + image;
     },

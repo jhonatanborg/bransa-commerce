@@ -22,7 +22,7 @@
             Adicione produtos ao carrinho e finalize seu pedido!
           </h4>
         </div>
-        <v-btn large color="red lighten-1" @click="closeSale()" depressed dark
+        <v-btn large color="#3868E3" @click="closeSale()" depressed dark
           >Veja nossos produtos</v-btn
         >
       </div>

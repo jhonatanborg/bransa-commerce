@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar app color="white" flat>
+  <v-app-bar app color="#3868E3" flat>
     <div class="d-flex justify-center align-center">
       <router-link :to="{ name: 'Home' }">
         <v-img width="130px" src="@/assets/images/brand.png"></v-img>
@@ -63,6 +63,7 @@ export default {
   font-size: 14px;
   line-height: 17px;
   margin: 0 30px;
+  color: #efefef !important;
 }
 
 .nav-links > a {
@@ -70,10 +71,11 @@ export default {
   text-decoration: none;
   color: #efefef;
   margin: 0 30px;
+  color: #efefef !important;
 }
 
 .nav-links > a:hover {
-  color: #ff5353;
+  color: #efefef;
 }
 .badge {
   background-color: #6394f8;

@@ -51,7 +51,7 @@
               :loading="loading"
               @click="login()"
               dark
-              color="#ff5353"
+              color="#3868E3"
               >Login</v-btn
             >
           </div>
@@ -62,7 +62,7 @@
               dark
               @click="$emit('first-access')"
               outlined
-              color="#ff5353"
+              color="#3868E3"
               >Primeiro acesso?
             </v-btn>
           </div>

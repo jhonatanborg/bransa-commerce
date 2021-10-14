@@ -97,9 +97,7 @@
           ></v-text-field>
         </v-col>
         <v-col cols="12" class="py-0">
-          <v-btn x-large @click="verify()" block dark deprEsted color="red lighten-1"
-            >Avançar</v-btn
-          >
+          <v-btn x-large @click="verify()" block dark deprEsted color="#3868E3">Avançar</v-btn>
         </v-col>
       </v-row>
     </v-form>

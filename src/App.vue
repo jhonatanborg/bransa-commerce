@@ -23,7 +23,7 @@
                 <span>Telefone:</span>
               </div>
               <div class="item-details">
-                <span>(66) 3531 - 9039</span>
+                <span>(66) 9 9921 - 1712</span>
               </div>
             </v-col>
             <v-col cols="12" sm="8">
@@ -31,7 +31,10 @@
                 <span>Endereço:</span>
               </div>
               <div class="item-details">
-                <span> Rua Muricis, nº 502 - Jardim Primaveras - Sinop, Mato Grosso </span> <br />
+                <span>
+                  Rua Ciclames, nº 177 - Jardim Primaveras - Sinop, Mato Grosso
+                </span>
+                <br />
                 <span>78550-001</span>
               </div>
             </v-col>

@@ -71,7 +71,7 @@
       <v-alert dark color="error " icon="mdi-alert" dismissible :value="error">
         Selecione uma forma de pagamento para finalizar
       </v-alert>
-      <v-btn color="red lighten-1" x-large @click="validPurchase" block dark>Confirmar</v-btn>
+      <v-btn color="#3868E3" x-large @click="validPurchase" block dark>Confirmar</v-btn>
     </div>
   </div>
 </template>

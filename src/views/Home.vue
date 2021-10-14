@@ -7,7 +7,7 @@
         <!-- <Categories /> -->
       </div>
     </v-container>
-    <div class="red lighten-1">
+    <div class="#3868E3">
       <PrimeList />
     </div>
   </div>

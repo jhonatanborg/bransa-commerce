@@ -19,7 +19,7 @@
           ></v-text-field>
         </v-col>
         <v-col>
-          <v-btn x-large @click="passConfirm()" block dark deprEsted color="red lighten-1"
+          <v-btn x-large @click="passConfirm()" block dark deprEsted color="#3868E3"
             >Confirmar senha</v-btn
           >
         </v-col>

@@ -1,3 +1,4 @@
+// eslint-disable-next-line prettier/prettier
 <template>
   <div>
     <v-toolbar height="100px" v-if="message" flat color="grey darken-3" dark>
@@ -33,12 +34,7 @@
                   cols="auto"
                   @click="categorieFilter = index"
                 >
-                  <v-chip
-                    small
-                    link
-                    dark
-                    :color="categorieFilter === index ? 'red lighten-1' : 'grey'"
-                  >
+                  <v-chip small link dark :color="categorieFilter === index ? '#3868E3' : 'grey'">
                     <b v-text="categorie.produto_grupo"></b>
                   </v-chip>
                 </v-col>
@@ -77,7 +73,9 @@
           <div id="list-products text-uppercase">
             <div :id="'go'">
               <div>
-                <span class="title-category"> {{ selectCategorie.produto_grupo }} </span>
+                <span class="title-category">
+                  {{ selectCategorie.produto_grupo }}
+                </span>
                 <small>({{ selectCategorie.produtos.length }})</small>
               </div>
             </div>
@@ -184,12 +182,16 @@ export default {
       this.$store
         .dispatch('user/request', {
           method: 'GET',
-          url: '/mensagem/?empresa_id=4',
+          url: '/mensagem/?empresa_id=43',
           noMsg: true,
         })
         .then(resp => {
           this.message = resp.data[0].mensagem;
-          this.$store.commit('user/request', ['message', resp.data[0].mensagem]);
+          // eslint-disable-next-line prettier/prettier
+          this.$store.commit('user/request', [
+            'message',
+            resp.data[0].mensagem,
+          ]);
         });
     },
   },

@@ -69,14 +69,10 @@
           ></v-text-field>
         </v-col>
         <v-col>
-          <v-btn large outlined @click="$emit('return')" block dark color="red lighten-1"
-            >Voltar</v-btn
-          >
+          <v-btn large outlined @click="$emit('return')" block dark color="#3868E3">Voltar</v-btn>
         </v-col>
         <v-col>
-          <v-btn large @click="setAddress()" block dark depressed color="red lighten-1"
-            >Avançar</v-btn
-          >
+          <v-btn large @click="setAddress()" block dark depressed color="#3868E3">Avançar</v-btn>
         </v-col>
       </v-row>
     </v-form>

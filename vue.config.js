@@ -1,8 +1,8 @@
 module.exports = {
   transpileDependencies: ['vuetify'],
   pwa: {
-    name: 'Bransa',
-    themeColor: '#c90a25',
+    name: 'Alibabatem',
+    themeColor: '#3868E3',
     msTileColor: '#FFFFFF',
     manifestOptions: {
       background_color: '#FFFFFF',

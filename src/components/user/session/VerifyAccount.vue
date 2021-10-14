@@ -14,7 +14,7 @@
       <v-row dense class="pa-5">
         <v-col cols="12">
           <v-text-field
-            color="red lighten-1"
+            color="#3868E3"
             outlined
             dense
             v-mask="['###.###.###-##', '##.###.###/####-##']"
@@ -39,7 +39,7 @@
           >
         </v-col>
         <v-col cols="12">
-          <v-btn @click="verify()" :loading="$store.state.loading" block color="red lighten-1" dark
+          <v-btn @click="verify()" :loading="$store.state.loading" block color="#3868E3" dark
             >Verificar</v-btn
           >
         </v-col>
