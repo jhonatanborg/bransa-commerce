@@ -109,7 +109,7 @@ export default {
   },
   data() {
     return {
-      message: 'As melhores marcas estão no Bransa',
+      message: 'Os Melhores produtos e os melhores preços aqui no Alibabatem',
       descriptionLimit: 60,
       entries: [],
       isLoading: false,
