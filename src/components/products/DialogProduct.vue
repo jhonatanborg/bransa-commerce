@@ -24,6 +24,9 @@
           <span v-text="inventory.message"></span>
         </v-alert>
         <span v-text="productModal.produto_descricao"></span>
+        <div class="" v-if="productModal.produto_especificacoes">
+          <span v-text="productModal.produto_especificacoes"></span>
+        </div>
       </div>
 
       <v-toolbar height="80px" bottom floating absolute>
