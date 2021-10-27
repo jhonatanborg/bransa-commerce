@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card class="overflow-y-auto barscroll" style="height: 30vh;" flat>
+    <v-card class="overflow-y-auto barscroll" style="height: 30vh" flat>
       <div class="py-3 grey lighten-4">
         <span class="mx-3">Produtos</span>
       </div>
@@ -104,7 +104,8 @@ export default {
       return parseFloat(this.subTotal);
     },
     payment() {
-      return this.$store.getters['user/getPayments'];
+      console.log(this.$store.getters['user/getPayments']);
+      return this.$store.getters['user/getPayments'] || [];
     },
   },
   methods: {

@@ -123,9 +123,9 @@ export default {
         this.messageValidate = 'Documento inválido! Tente com um válido';
       }
     },
-    sendClient() {
+    async sendClient() {
       this.cliente.cliente_cnpj_cpf = this.cliente.cliente_cnpj_cpf.match(/[0-9]/g).join('');
-      this.$store
+      await this.$store
         .dispatch('user/request', {
           method: 'POST',
           url: '/login',
@@ -138,9 +138,10 @@ export default {
             this.$emit('pass');
           } else {
             this.$router.push('/');
-            this.$store.commit('user/request', ['user', response.data]);
+            // this.$store.commit('user/request', ['user', response.data]);
             localStorage.setItem('user', JSON.stringify(response.data));
             localStorage.setItem('token', response.data.token);
+            this.verify();
           }
           this.loading = false;
         })
@@ -155,6 +156,20 @@ export default {
             this.loading = false;
           }
         });
+    },
+    async verify() {
+      if (localStorage.getItem('token')) {
+        await this.$store
+          .dispatch('user/request', {
+            state: 'user',
+            method: 'GET',
+            url: '/verify',
+          })
+          .catch(() => {
+            localStorage.clear();
+            window.location.reload();
+          });
+      }
     },
   },
 };

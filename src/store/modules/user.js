@@ -24,6 +24,7 @@ const user = {
         if (state.user.grupocli) {
           const payments = [];
           state.user.grupocli.formaPgtoCli.forEach(element => {
+            console.log('um item', element);
             payments.push(element.formaPgto);
           });
           return payments;
