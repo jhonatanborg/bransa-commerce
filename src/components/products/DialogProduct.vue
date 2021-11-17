@@ -1,15 +1,15 @@
 <template>
   <v-dialog
     transition="dialog-transition"
-    max-width="650px"
-    width="500"
+    max-width="800"
+    :width="specifications ? 800 : 500"
     persistent
     scrollable
     @click:outside="close"
     :value="$store.state.product.DialogProduct"
     :fullscreen="$vuetify.breakpoint.xsOnly"
   >
-    <v-card v-if="productModal">
+    <v-card v-if="productModal && !specifications">
       <v-img width="100%" height="35%" aspect-ratio="1.3" :src="image(productModal.produto_imagem)">
         <v-row justify="end">
           <v-col cols="auto">
@@ -18,17 +18,18 @@
             </v-btn>
           </v-col>
         </v-row>
+        <div v-if="productModal.produto_especificacoes && !specifications">
+          <v-btn color="primary" right small bottom text absolute @click="toggleSpecifications">
+            <b>Ver especificações técnicas</b>
+          </v-btn>
+        </div>
       </v-img>
       <div class="height-title">
         <v-alert dark color="error" dismissible v-model="inventory.error">
           <span v-text="inventory.message"></span>
         </v-alert>
         <span v-text="productModal.produto_descricao"></span>
-        <div class="" v-if="productModal.produto_especificacoes">
-          <span v-text="productModal.produto_especificacoes"></span>
-        </div>
       </div>
-
       <v-toolbar height="80px" bottom floating absolute>
         <v-row align="center" justify="center">
           <v-col cols="4" sm="4">
@@ -64,6 +65,14 @@
         </v-row>
       </v-toolbar>
     </v-card>
+    <v-card class="pa-3" v-if="productModal && specifications">
+      <div class="d-flex justify-end">
+        <v-btn text color="primary" @click="toggleSpecifications">
+          Voltar
+        </v-btn>
+      </div>
+      <v-card-text v-html="productModal.produto_especificacoes"></v-card-text>
+    </v-card>
   </v-dialog>
 </template>
 
@@ -74,6 +83,7 @@ export default {
   mixins: [Mixins],
   data() {
     return {
+      specifications: false,
       main: 'https://i.imgur.com/FhzGn2D.png',
       dialog: false,
       itemQuantity: [1, 2, 3, 4, 5, 6, 7, 8, 9],
@@ -136,6 +146,9 @@ export default {
     },
   },
   methods: {
+    toggleSpecifications() {
+      this.specifications = !this.specifications;
+    },
     verifyInventory() {
       if (this.quantity > this.productModal.produto_qtde) {
         this.quantity = this.productModal.produto_qtde;
@@ -195,7 +208,7 @@ export default {
         return image;
       }
       if (!image) {
-        return 'https://i.imgur.com/Ho0V1gI.jpg';
+        return 'https://i.imgur.com/jcWYGjx.png';
       }
       return this.$store.state.server + image;
     },
